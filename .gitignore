@@ -1,2 +1,5 @@
 node_modules
 npm-debug.log
+
+public/assets/js
+public/assets/stylesheets

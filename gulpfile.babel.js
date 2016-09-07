@@ -1,16 +1,19 @@
-const gulp = require('gulp');
-const gutil = require('gulp-util');
-const source = require('vinyl-source-stream');
-const babelify = require('babelify');
-const watchify = require('watchify');
-const exorcist = require('exorcist');
-const browserify = require('browserify');
-const browserSync = require('browser-sync');
-const sass = require('gulp-sass');
+import gulp from 'gulp';
+import gutil from 'gulp-util';
+import source from 'vinyl-source-stream';
+import babelify from 'babelify';
+import watchify from 'watchify';
+import exorcist from 'exorcist';
+import browserify from 'browserify';
+import browserSync from 'browser-sync';
+import sass from 'gulp-sass';
+import plumber from 'gulp-plumber';
+import sourcemaps from 'gulp-sourcemaps';
+import autoprefixer from 'gulp-autoprefixer';
 
-// Input file.
+// Input file
 watchify.args.debug = true;
-let bundler = browserify('app/app.js', watchify.args);
+const bundler = browserify('app/app.js', watchify.args);
 
 // Babel transform
 bundler.transform(babelify.configure({
@@ -39,7 +42,7 @@ function bundle() {
 /**
  * Gulp task alias
  */
-gulp.task('bundle', ['lint', 'styles'], () => {
+gulp.task('bundle', ['styles'], () => {
   return bundle();
 });
 
@@ -55,25 +58,17 @@ gulp.task('default', ['bundle'], () => {
 
 gulp.task('styles', () => {
   return gulp.src('app/stylesheets/*.scss')
-    // .pipe($.plumber())
-    // .pipe($.sourcemaps.init())
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(sass.sync({
       outputStyle: 'expanded',
       precision: 10,
       includePaths: ['.']
     }).on('error', sass.logError))
-    // .pipe($.autoprefixer({browsers: ['last 1 version']}))
-    // .pipe($.uncss({
-    //   html: ['app/*.html']
-    // }))
-    // .pipe($.sourcemaps.write())
+    .pipe(autoprefixer({browsers: ['last 1 version']}))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('public/stylesheets'))
-    .pipe(bundle());
-});
-
-gulp.task('lint', () => {
-  gulp
-    .src(['gulpfile.babel.js', 'app/**/*.js', 'server/*.js'])
+    .pipe(browserSync.stream());
 });
 
 gulp.task('watch', ['default'], () => {
