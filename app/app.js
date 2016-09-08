@@ -1,7 +1,10 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router'
+import { weatherModule } from './weather';
 
 angular.module('app', [
-  require('angular-ui-router')
+  uiRouter,
+  weatherModule
 ])
 .config([
   '$stateProvider',
@@ -13,6 +16,8 @@ angular.module('app', [
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'views/main.html'
+        templateUrl: 'views/main.html',
+        controller: 'MainController',
+        controllerAs: 'vm',
       });
 }]);
