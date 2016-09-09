@@ -4,7 +4,10 @@
   "description": "How to upgrade your existing Angular 1 app that uses browserify to Angular 2",
   "main": "app/app.js",
   "scripts": {
-    "start": "gulp watch"
+    "start": "gulp watch",
+    "bundle": "gulp bundle",
+    "gh-pages": "npm run bundle && npm run deploy:github-pages",
+    "deploy:github-pages": "git subtree push --prefix public origin gh-pages"
   },
   "author": "Sergio Cruz <hello@sergiocruz.me>",
   "license": "MIT",
