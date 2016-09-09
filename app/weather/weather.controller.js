@@ -11,7 +11,7 @@ function WeatherCtrl($stateParams, Weather) {
   const vm = this;
   vm.loading = true;
   vm.info = null;
-  vm.hasError = false;
+  vm.hasError = true;
   vm.icon = '';
 
   activate();
