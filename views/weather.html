@@ -2,7 +2,7 @@
   <h2>Loading...</h2>
 </div>
 
-<div class="weather-container" ng-if="!vm.loading">
+<div class="weather-container" ng-if="!vm.loading && !vm.hasError">
   <h1 class="weather-title">
     {{ vm.info.name }}
   </h1>
@@ -29,9 +29,14 @@
   </div>
 </div>
 
+<div class="weather-container" ng-if="!vm.loading && vm.hasError">
+  <h1 class="weather-title">An error has occurred.</h1>
+  <h2 class="weather-subtitle"><i class="fa fa-frown-o"></i></h2>
+</div>
+
 <div class="weather-back">
   <a ui-sref="main" class="btn btn-primary">
-    <i class="wi wi-day-lightning"></i>
+    <i class="fa fa-bolt"></i>
     New Search
   </a>
 </div>
