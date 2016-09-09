@@ -48,3 +48,21 @@
   text-align: center;
   margin: 15px auto;
 }
+
+.weather-preview {
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+
+  i {
+    margin: 0 .3em;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.6em;
+  }
+
+  a {
+    font-family: $font-cursive;
+    font-size: 1.4em;
+    margin: 0 .2em;
+  }
+}

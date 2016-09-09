@@ -8,6 +8,7 @@
         placeholder="Where?"
         class="form-control"
         ng-model="vm.searchTerm"
+        ng-change="vm.onSearchChange()"
         autofocus />
     </div>
 
@@ -15,6 +16,7 @@
       <select class="form-control country-dropdown"
         ng-model="vm.searchCountry"
         ng-options="country.code as country.name for country in vm.countries"
+        ng-change="vm.onSearchChange()"
         ></select>
     </div>
 
@@ -23,4 +25,7 @@
       Get Weather
     </button>
   </form>
+
 </div>
+
+<weather-preview weather="vm.weather"></weather-preview>

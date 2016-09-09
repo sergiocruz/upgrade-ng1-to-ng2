@@ -1,15 +1,21 @@
 // Bootstrap
 $font-family-sans-serif: 'Raleway', sans-serif;
 $icon-font-path: "../fonts/bootstrap/";
-$brand-primary: #6a3093;
+$brand-primary: #6A3093;
 $text-color: #FFFFFF;
 $font-size-base: 22px;
 $border-radius-base: 0;
 $border-radius-large: 0;
 $border-radius-small: 0;
+$link-color: #FFFFFF;
+$link-hover-color: lighten($brand-primary, 40%);
+$link-hover-decoration: none;
 
 // FontAwesome
 $fa-font-path: "../fonts/font-awesome";
 
 // Weather Icons
 $wi-path: "../fonts/weather-icons";
+
+// Theme
+$font-cursive: 'Dancing Script', cursive;;

@@ -1,18 +1,22 @@
 export const MainController = [
   '$state',
+  'Weather',
   MainCtrl
 ]
 
 import {countries} from './countries.constant';
+import debounce from 'lodash/debounce';
 
-function MainCtrl($state) {
+function MainCtrl($state, Weather) {
 
   const vm = this;
   vm.searchWeather = searchWeather;
+  vm.onSearchChange = debounce(onSearchChange, 600);
   vm.countries = countries;
   vm.searchCountry = 'US';
   vm.searchTerm = '';
   vm.hasError = false;
+  vm.weather = null;
 
   /////////////////
 
@@ -30,6 +34,22 @@ function MainCtrl($state) {
       countryCode: vm.searchCountry,
       searchTerm: vm.searchTerm,
     });
+  }
+
+  /**
+   * On search change
+   * @return {Void}
+   */
+  function onSearchChange() {
+
+    if (!vm.searchTerm) {
+      vm.weather = null;
+      return;
+    }
+
+    Weather
+      .getTemperature(vm.searchTerm, vm.searchCountry)
+      .then((info) => vm.weather = info);
   }
 
 

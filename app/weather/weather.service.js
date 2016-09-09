@@ -1,4 +1,5 @@
 const { apiKey } = require('../config/config.json');
+import { weatherIcons } from './weather-icons.constant';
 
 class Weather {
 
@@ -21,6 +22,20 @@ class Weather {
     })
     .then(({ data }) => data);
 
+  }
+
+  getIcon(info) {
+    const code = info.weather[0].id;
+    const hour = new Date().getHours();
+    let { icon } = weatherIcons[code];
+    let dorn = '';
+
+    // If we are not in the ranges mentioned above, add a day/night prefix.
+    if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
+      dorn = (hour > 6 && hour < 20) ? 'day-' : 'night-';
+    }
+
+    return `wi-${dorn}${icon}`;
   }
 
 }

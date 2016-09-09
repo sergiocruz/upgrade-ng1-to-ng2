@@ -246,7 +246,7 @@ export const weatherIcons = {
 
   "800": {
     "label": "clear sky",
-    "icon": "clear"
+    "icon": "sunny"
   },
 
   "801": {
