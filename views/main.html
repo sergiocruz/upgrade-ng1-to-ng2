@@ -1,1 +1,26 @@
-Hello from {{ vm.hello }}
+
+<div class="search-container">
+  <h1 class="search-title">What's the weather?</h1>
+  <form class="search-form form" ng-submit="vm.searchWeather()">
+
+    <div class="form-group">
+      <input type="text"
+        placeholder="Where?"
+        class="form-control"
+        ng-model="vm.searchTerm"
+        autofocus />
+    </div>
+
+    <div class="form-group">
+      <select class="form-control country-dropdown"
+        ng-model="vm.searchCountry"
+        ng-options="country.code as country.name for country in vm.countries"
+        ></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      <i class="wi wi-day-sunny"></i>
+      Get Weather
+    </button>
+  </form>
+</div>
