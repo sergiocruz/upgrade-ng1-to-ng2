@@ -1,0 +1,40 @@
+.search-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.search-title,
+.search-form {
+  margin: 20px auto;
+}
+
+.search-title {
+  text-align: center;
+  text-shadow: 1px 4px 1px #000000;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+
+  @media (max-width: $screen-xs-max) {
+    flex-direction: column;
+  }
+
+  .form-control, .btn {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0px;
+    height: 45px;
+    width: 200px;
+    margin: 0 10px;
+  }
+
+  .btn:hover i {
+    @extend .fa-spin;
+  }
+}

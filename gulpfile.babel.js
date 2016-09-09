@@ -1,15 +1,31 @@
-import gulp from 'gulp';
-import gutil from 'gulp-util';
-import source from 'vinyl-source-stream';
-import babelify from 'babelify';
-import watchify from 'watchify';
-import exorcist from 'exorcist';
-import browserify from 'browserify';
-import browserSync from 'browser-sync';
-import sass from 'gulp-sass';
-import plumber from 'gulp-plumber';
-import sourcemaps from 'gulp-sourcemaps';
-import autoprefixer from 'gulp-autoprefixer';
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const source = require('vinyl-source-stream');
+const babelify = require('babelify');
+const watchify = require('watchify');
+const exorcist = require('exorcist');
+const browserify = require('browserify');
+const browserSync = require('browser-sync');
+const sass = require('gulp-sass');
+const plumber = require('gulp-plumber');
+const sourcemaps = require('gulp-sourcemaps');
+const autoprefixer = require('gulp-autoprefixer');
+
+// Fonts that need to be copied
+const fonts = [
+  {
+    from: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/*',
+    to: 'public/assets/fonts/bootstrap'
+  },
+  {
+    from: 'node_modules/font-awesome/fonts/*',
+    to: 'public/assets/fonts/font-awesome'
+  },
+  {
+    from: 'app/stylesheets/weather-icons/font/*',
+    to: 'public/assets/fonts/weather-icons'
+  },
+];
 
 // Input file
 watchify.args.debug = true;
@@ -56,7 +72,7 @@ gulp.task('default', ['bundle'], () => {
   });
 });
 
-gulp.task('styles', () => {
+gulp.task('styles', ['copy-fonts'], () => {
   return gulp.src('app/stylesheets/*.scss')
     .pipe(plumber())
     .pipe(sourcemaps.init())
@@ -70,6 +86,12 @@ gulp.task('styles', () => {
     .pipe(gulp.dest('public/assets/stylesheets'))
     .pipe(browserSync.stream());
 });
+
+gulp.task('copy-fonts', () => {
+  fonts.forEach(
+    (copy) => gulp.src(copy.from).pipe(gulp.dest(copy.to))
+  )
+})
 
 gulp.task('watch', ['default'], () => {
   gulp.watch('app/stylesheets/**/*.scss', ['styles']);

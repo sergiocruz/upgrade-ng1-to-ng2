@@ -1,21 +1,36 @@
 export const MainController = [
-  'Weather',
+  '$state',
   MainCtrl
 ]
 
-function MainCtrl(Weather) {
+import {countries} from './countries.constant';
+
+function MainCtrl($state) {
 
   const vm = this;
-  vm.hello = 'World';
-  getTemperature();
+  vm.searchWeather = searchWeather;
+  vm.countries = countries;
+  vm.searchCountry = 'US';
+  vm.searchTerm = '';
+  vm.hasError = false;
 
-  function getTemperature() {
+  /////////////////
 
-    Weather.getTemperature(34734)
-      .then((data) => console.log(data))
+  /**
+   * Searches temperature
+   * @return {Void}
+   */
+  function searchWeather() {
 
+    if (!vm.searchCountry || !vm.searchTerm) {
+      vm.hasError = true;
+    }
+
+    $state.go('weather', {
+      countryCode: vm.searchCountry,
+      searchTerm: vm.searchTerm,
+    });
   }
-
 
 
 }

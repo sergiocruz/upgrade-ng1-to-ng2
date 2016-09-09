@@ -1,0 +1,37 @@
+<div class="weather-container" ng-if="vm.loading">
+  <h2>Loading...</h2>
+</div>
+
+<div class="weather-container" ng-if="!vm.loading">
+  <h1 class="weather-title">
+    {{ vm.info.name }}
+  </h1>
+
+  <h2 class="weather-subtitle">
+    {{ vm.info.main.temp | number:0 }}°F {{ vm.info.weather[0].main }}
+  </h2>
+
+  <div class="weather-info">
+    <span class="outlined">
+      <i class="wi {{ vm.icon }}"></i>
+      {{ vm.info.weather[0].description }}
+    </span>
+
+    <span class="outlined">
+      <i class="wi wi-sunrise"></i>
+      Sunrise {{vm.info.sys.sunrise * 1000 | date:'shortTime'}}
+    </span>
+
+    <span class="outlined">
+      <i class="wi wi-sunset"></i>
+      Sunset {{vm.info.sys.sunset * 1000 | date:'shortTime'}}
+    </span>
+  </div>
+</div>
+
+<div class="weather-back">
+  <a ui-sref="main" class="btn btn-primary">
+    <i class="wi wi-day-lightning"></i>
+    New Search
+  </a>
+</div>

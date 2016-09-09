@@ -1,16 +1,16 @@
-* {
-  margin: 0;
-}
+// Variables
+@import 'variables';
 
-body {
-  color: #333333;
-  font-family: 'Helvetica Neue', Arial, sans;
-  font-size: 18px;
-  font-weight: 200;
-  background-color: #F5F5F5;
-}
+// Bootstrap
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
-.container {
-  max-width: 1100px;
-  margin: 20px auto;
-}
+// Font Awesome
+@import '../../node_modules/font-awesome/scss/font-awesome';
+
+// Weather Icons
+@import './weather-icons/sass/weather-icons';
+
+// Custom theme
+@import 'theme';
+@import 'search';
+@import 'weather';

@@ -39,6 +39,7 @@ jspm_packages
 # Assets
 public/assets/js
 public/assets/stylesheets
+public/assets/fonts
 
 # Config
 app/config/config.json
