@@ -12,7 +12,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
 
-// Fonts that need to be copied
+// Fonts that need to be copied.
 const fonts = [
   {
     from: 'node_modules/bootstrap-sass/assets/fonts/bootstrap/*',
