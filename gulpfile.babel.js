@@ -3,7 +3,6 @@ const gutil = require('gulp-util');
 const source = require('vinyl-source-stream');
 const babelify = require('babelify');
 const watchify = require('watchify');
-const exorcist = require('exorcist');
 const browserify = require('browserify');
 const browserSync = require('browser-sync');
 const buffer = require('vinyl-buffer');
@@ -49,10 +48,11 @@ function bundle() {
       browserSync.notify('Browserify Error!');
       this.emit('end');
     })
-    .pipe(exorcist('public/assets/js/bundle.js.map'))
     .pipe(source('bundle.js'))
     .pipe(buffer())
-    .pipe(uglify())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(uglify({compress:{drop_debugger: false}}))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/assets/js'))
     .pipe(browserSync.stream({once: true}));
 }
