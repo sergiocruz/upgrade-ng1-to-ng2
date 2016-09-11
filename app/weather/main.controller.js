@@ -5,7 +5,7 @@ export const MainController = [
 ]
 
 import {countries} from './countries.constant';
-import debounce from 'lodash/debounce';
+import * as debounce from 'lodash/debounce';
 
 function MainCtrl($state, Weather) {
 
