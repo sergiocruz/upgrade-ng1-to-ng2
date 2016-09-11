@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const source = require('vinyl-source-stream');
-const babelify = require('babelify');
+const tsify = require('tsify');
 const watchify = require('watchify');
 const browserify = require('browserify');
 const browserSync = require('browser-sync');
@@ -31,10 +31,10 @@ const fonts = [
 
 // Input file
 watchify.args.debug = true;
-const bundler = browserify('app/app.js', watchify.args);
+const bundler = browserify('app/app.ts', watchify.args);
 
-// Babel transform
-bundler.transform(babelify);
+// TypeScript plugin
+bundler.plugin(tsify);
 
 // On updates recompile
 bundler.on('update', bundle);
@@ -98,7 +98,7 @@ gulp.task('copy-fonts', () => {
 
 gulp.task('watch', ['default'], () => {
   gulp.watch('app/stylesheets/**/*.scss', ['styles']);
-  gulp.watch('app/**/*.js', ['bundle']);
+  gulp.watch('app/**/*.{js,ts}', ['bundle']);
   gulp.watch('public/**/*.html', ['bundle']);
 });
 
