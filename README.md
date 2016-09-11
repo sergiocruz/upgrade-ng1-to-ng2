@@ -22,9 +22,9 @@ I hope this is useful, and you all enjoy it :)
 
 ## Upgrade steps
 
-### 1 - [`1-start-here`](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/1-start-here) branch
+### 1 - Start here _([see branch](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/1-start-here))_
 
-### 2 - [`2-typescript`](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/2-typescript) branch
+### 2 - TypeScript _([see branch](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/2-typescript))_
 
 1. TypeScript
   1. installed `typescript` and created `tsconfig.json`
@@ -42,3 +42,15 @@ I hope this is useful, and you all enjoy it :)
   1. Changed default imports to `* as x` syntax
     1. went from `import uiRouter from 'angular-ui-router'`
     1. to `import * as uiRouter from 'angular-ui-router'`
+
+### 3 - Bootstrap with Angular 2 _([see branch](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/3-angular2))_
+
+1. Manual bootstrapping with Angular 1.x
+  1. remove `ng-app` from `index.html`
+  1. add manual bootstrap code
+1. Install Angular 2 dependencies
+  1. ng2 upgrade libraries (RC5)
+  1. auxiliary libs: `reflect-metadata`, `rxjs`, `zone.js`
+  1. create new `ng-upgrade.ts` file, export an instance of `new UpgradeAdapter()`
+1. Bootstrap with ng2 instead of ng1
+  1. in `app.ts`, swap `angular.bootstrap()` with `upgradeAdapter.bootstra()`
