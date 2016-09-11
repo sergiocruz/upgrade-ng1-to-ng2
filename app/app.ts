@@ -6,3 +6,7 @@ angular.module('app', [
   uiRouter,
   weatherModule
 ]);
+
+document.addEventListener('DOMContentLoaded', () => {
+  angular.bootstrap(document.body, ['app']);
+});
