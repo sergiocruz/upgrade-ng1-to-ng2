@@ -19,3 +19,26 @@ Running `npm start` should get the app running in a local webserver.
 This project has different branches with the different upgrade steps. Be sure to run `npm install` every time you change branches as we may have brought in different dependencies depending on which step we're on.
 
 I hope this is useful, and you all enjoy it :)
+
+## Upgrade steps
+
+### `1-start-here` branch
+
+### `2-typescript`
+
+1. TypeScript
+  1. installed `typescript` and created `tsconfig.json`
+  1. renamed `app/app.js` to `app/app.ts`
+1. Typings
+  1. installed `typings` and added needed dependencies for this project
+  1. ie. `typings install dt~angular --save --global`, etc (see `typings.json`)
+  1. added npm `postinstall` script to install typings every time
+1. Gulp
+  1. installed `tsify`
+  1. replaced `bundler.transform(babelify)` with `bundler.plugin(tsify)`
+  1. set entry file as
+1. Code
+  1. Using `require('angular')` because of global dependencies _(tricking the compiler)_
+  1. Changed default imports to `* as x` syntax
+    1. went from `import uiRouter from 'angular-ui-router'`
+    1. to `import * as uiRouter from 'angular-ui-router'`
