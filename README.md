@@ -24,6 +24,14 @@ I hope this is useful, and you all enjoy it :)
 
 ### 1 - Start here _([see branch](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/1-start-here))_
 
+Go here to see the initial app working before the upgrade. These were the tools used to build this app:
+
+- [Angular 1.5](https://angularjs.org/)
+- [UI-Router](https://ui-router.github.io/ng1/)
+- [Gulp](http://gulpjs.com/)
+- [Browserify](http://browserify.org/)
+- [Babel](https://babeljs.io/)
+
 ### 2 - TypeScript _([see branch](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/2-typescript))_
 
 1. TypeScript
@@ -53,4 +61,4 @@ I hope this is useful, and you all enjoy it :)
   1. auxiliary libs: `reflect-metadata`, `rxjs`, `zone.js`
   1. create new `ng-upgrade.ts` file, export an instance of `new UpgradeAdapter()`
 1. Bootstrap with ng2 instead of ng1
-  1. in `app.ts`, swap `angular.bootstrap()` with `upgradeAdapter.bootstra()`
+  1. in `app.ts`, swap `angular.bootstrap()` with `upgradeAdapter.bootstrap()`
