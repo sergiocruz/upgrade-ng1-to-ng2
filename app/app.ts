@@ -7,6 +7,7 @@ angular.module('app', [
   weatherModule
 ]);
 
+import { upgradeAdapter } from './ng2-upgrade';
 document.addEventListener('DOMContentLoaded', () => {
-  angular.bootstrap(document.body, ['app']);
+  upgradeAdapter.bootstrap(document.body, ['app']);
 });
