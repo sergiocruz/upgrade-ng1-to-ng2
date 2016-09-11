@@ -22,9 +22,9 @@ I hope this is useful, and you all enjoy it :)
 
 ## Upgrade steps
 
-### `1-start-here` branch
+### 1 - [`1-start-here`](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/1-start-here) branch
 
-### `2-typescript`
+### 2 - [`2-typescript`](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/2-typescript) branch
 
 1. TypeScript
   1. installed `typescript` and created `tsconfig.json`
