@@ -34,9 +34,7 @@ watchify.args.debug = true;
 const bundler = browserify('app/app.js', watchify.args);
 
 // Babel transform
-bundler.transform(babelify.configure({
-  sourceMapRelative: 'app'
-}));
+bundler.transform(babelify);
 
 // On updates recompile
 bundler.on('update', bundle);
