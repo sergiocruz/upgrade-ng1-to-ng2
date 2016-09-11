@@ -22,9 +22,9 @@ I hope this is useful, and you all enjoy it :)
 
 ## Upgrade steps
 
-### `1-start-here` branch
+### 1 - [`1-start-here`](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/1-start-here) branch
 
-### `2-typescript`
+### 2 - [`2-typescript`](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/2-typescript) branch
 
 1. TypeScript
   1. installed `typescript` and created `tsconfig.json`
@@ -36,7 +36,7 @@ I hope this is useful, and you all enjoy it :)
 1. Gulp
   1. installed `tsify`
   1. replaced `bundler.transform(babelify)` with `bundler.plugin(tsify)`
-  1. set entry file as
+  1. set entry file as `app/app.ts`
 1. Code
   1. Using `require('angular')` because of global dependencies _(tricking the compiler)_
   1. Changed default imports to `* as x` syntax
