@@ -6,10 +6,12 @@ const watchify = require('watchify');
 const exorcist = require('exorcist');
 const browserify = require('browserify');
 const browserSync = require('browser-sync');
+const buffer = require('vinyl-buffer');
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
+const uglify = require('gulp-uglify');
 
 // Fonts that need to be copied
 const fonts = [
@@ -51,6 +53,8 @@ function bundle() {
     })
     .pipe(exorcist('public/assets/js/bundle.js.map'))
     .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('public/assets/js'))
     .pipe(browserSync.stream({once: true}));
 }
