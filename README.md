@@ -62,3 +62,31 @@ Go here to see the initial app working before the upgrade. These were the tools 
   1. create new `ng-upgrade.ts` file, export an instance of `new UpgradeAdapter()`
 1. Bootstrap with ng2 instead of ng1
   1. in `app.ts`, swap `angular.bootstrap()` with `upgradeAdapter.bootstrap()`
+
+### 4 - Convert Directive to Component _([see branch](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/4-first-component))_
+
+This is where we start applying Angular 2 principles to our application. For this exercise we will upgrade the `<weather-preview>` directive to an Angular 2 component.
+
+1. In `weather-preview.js` declare the component's structure
+  1. comment out the current directive declaration
+  1. import `Component` from `@angular/core`
+  1. declare `WeatherPreview` class and use the `@Component()`
+  1. declare the `selector` and a temporary hello world `template`
+1. In `weather/index.js`, downgrade the component to a directive
+  1. import `{WeatherPreview}` class
+  1. update `directive` by keeping same selector but replace declaration with `upgradeAdapter.downgradeNg2Component(WeatherPreview)`
+  1. go to view and "hello world" text should be on screen
+1. Finish migrating directive
+  1. copy old commented out template to new component template
+  1. Inject `Weather` service into component class
+    1. in `weather/index.js`, call `upgradeAdapter.upgradeNg1Provider('Weather')`
+    1. in the component declaration, add a `constructor(@Inject('Weather') private Weather){}`
+  1. set `@Input() weather` and change template to use `[weather]` instead in `main.html`
+  1. update component template syntax
+    1. replace `ng-if` with `*ngIf`
+    1. replace `class` with `[ngClass]='wi ' + getIcon()`
+    1. replace `{{ weather.main.temp | number:0 }}` with `getTemperature()`
+      1. so formatting can happen at class level
+      1. there is no `number` built-in pipe at the moment
+      1. if done too often, it is worth writing one
+    1. replace `ui-sref=""` with simple `href`
