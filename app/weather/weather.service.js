@@ -35,6 +35,11 @@ class Weather {
       dorn = (hour > 6 && hour < 20) ? 'day-' : 'night-';
     }
 
+    // Night edge case
+    if (dorn.startsWith('night') && icon.startsWith('sunny')) {
+      icon = 'clear';
+    }
+
     return `wi-${dorn}${icon}`;
   }
 
