@@ -1,10 +1,17 @@
-const { apiKey } = require('../config/config.json');
-import { weatherIcons } from './weather-icons.constant';
+import { weatherIcons } from './constants/weather-icons.constant';
+import { weatherStub } from './constants/weather.stub.js';
+import { offlineMode } from '../config/config';
 
 class Weather {
 
-  constructor($http) {
-    this.$http = $http;
+  constructor($q, $http) {
+
+    this.$q = $q;
+
+    // Just in case internet doesnt work during demo :)
+    this.$http = offlineMode
+      ? this.fakeRequest
+      : $http;
   }
 
   getTemperature(searchQuery, countryCode = 'US') {
@@ -40,9 +47,18 @@ class Weather {
     return '';
   }
 
+  fakeRequest() {
+    return this.$q(function(resolve, reject) {
+      resolve({
+        data: weatherStub
+      });
+    });
+  }
+
 }
 
 export const WeatherService = [
+  '$q',
   '$http',
   Weather
 ]
