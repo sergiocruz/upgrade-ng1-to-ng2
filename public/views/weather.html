@@ -5,12 +5,13 @@
 <div class="weather-container" ng-if="!vm.loading && !vm.hasError">
   <h1 class="weather-title">
     {{ vm.weather.location.city }}
+
+    <small>
+      {{ vm.weather.item.condition.temp | number:0 }}°{{ vm.weather.units.temperature }}
+    </small>
   </h1>
 
-  <h2 class="weather-subtitle">
-    {{ vm.weather.item.condition.temp | number:0 }}°{{ vm.weather.units.temperature }}
-    {{ vm.weather.weather[0].main }}
-  </h2>
+
 
   <div class="weather-info">
     <span class="outlined">
