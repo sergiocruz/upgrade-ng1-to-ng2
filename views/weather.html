@@ -4,29 +4,39 @@
 
 <div class="weather-container" ng-if="!vm.loading && !vm.hasError">
   <h1 class="weather-title">
-    {{ vm.info.name }}
+    {{ vm.weather.location.city }}
+
+    <small>
+      {{ vm.weather.item.condition.temp | number:0 }}°{{ vm.weather.units.temperature }}
+    </small>
   </h1>
 
-  <h2 class="weather-subtitle">
-    {{ vm.info.main.temp | number:0 }}°F {{ vm.info.weather[0].main }}
-  </h2>
+
 
   <div class="weather-info">
     <span class="outlined">
       <i class="wi {{ vm.icon }}"></i>
-      {{ vm.info.weather[0].description }}
+      {{ vm.weather.item.condition.text }}
     </span>
 
     <span class="outlined">
       <i class="wi wi-sunrise"></i>
-      Sunrise {{vm.info.sys.sunrise * 1000 | date:'shortTime'}}
+      Sunrise {{ vm.formatTime(vm.weather.astronomy.sunrise) }}
     </span>
 
     <span class="outlined">
       <i class="wi wi-sunset"></i>
-      Sunset {{vm.info.sys.sunset * 1000 | date:'shortTime'}}
+      Sunset {{ vm.formatTime(vm.weather.astronomy.sunset) }}
     </span>
   </div>
+
+  <ul class="weather-forecast">
+    <li ng-repeat="forecast in vm.weather.item.forecast | limitTo:5">
+      <i class="wi {{ vm.getIcon(forecast) }}"></i>
+      <span class="weather-forecast-day">{{ forecast.day }}</span>
+      <span class="weather-forecast-temp">{{ forecast.high }} / {{ forecast.low }}</span>
+    </li>
+  </ul>
 </div>
 
 <div class="weather-container" ng-if="!vm.loading && vm.hasError">
