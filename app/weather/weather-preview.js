@@ -5,8 +5,8 @@ import { Component, Input, Inject } from '@angular/core';
   template: `
     <div class="weather-preview" *ngIf="weather">
       <i [ngClass]="'wi ' + getIcon()"></i>
-      It's {{ getTemperature() }}°F in
-      <a [href]="'/#/weather/' + weather.sys.country + '/' + weather.name">{{ weather.name }}</a>
+      It's {{ getTemperature() }}°{{ weather.units.temperature }} in
+      <a [href]="'/#/weather/' + weather.location.country + '/' + weather.location.city">{{ weather.location.city }}</a>
       right now.
     </div>
   `
@@ -26,7 +26,7 @@ export class WeatherPreview {
       return '';
     }
 
-    return this.Weather.getIcon(this.weather);
+    return this.Weather.getIcon(this.weather.item.condition);
   }
 
   /**
@@ -38,6 +38,6 @@ export class WeatherPreview {
       return 0;
     }
 
-    return parseInt(this.weather.main.temp, 10);
+    return parseInt(this.weather.item.condition.temp, 10);
   }
 }
