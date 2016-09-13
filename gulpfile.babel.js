@@ -11,6 +11,7 @@ const plumber = require('gulp-plumber');
 const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify');
+const fs = require('fs');
 
 // Fonts that need to be copied.
 const fonts = [
@@ -60,7 +61,7 @@ function bundle() {
 /**
  * Gulp task alias
  */
-gulp.task('bundle', ['styles'], () => {
+gulp.task('bundle', ['create-config', 'styles'], () => {
   return bundle();
 });
 
@@ -99,4 +100,13 @@ gulp.task('watch', ['default'], () => {
   gulp.watch('app/stylesheets/**/*.scss', ['styles']);
   gulp.watch('app/**/*.{js,ts}', ['bundle']);
   gulp.watch('public/**/*.html', ['bundle']);
+});
+
+gulp.task('create-config', (done) => {
+
+  const config = JSON.stringify({
+    offlineMode: !!parseInt(process.env.OFFLINE)
+  }, null, 2);
+
+  fs.writeFile('app/config/config.json', config, done);
 });
