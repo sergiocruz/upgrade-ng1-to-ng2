@@ -9,38 +9,35 @@ class Weather {
 
   getTemperature(searchQuery, countryCode = 'US') {
 
-    const q = `${searchQuery},${countryCode}`;
+    const yql = `
+      select * from weather.forecast
+      where woeid in (
+        select woeid
+        from geo.places(1)
+        where text="${searchQuery},${countryCode}"
+      )
+    `;
 
     return this.$http({
       method: 'GET',
-      url: 'http://api.openweathermap.org/data/2.5/weather',
+      url: 'https://query.yahooapis.com/v1/public/yql',
       params: {
-        units: 'imperial', // degrees in fahrenheit
-        APPID: apiKey, // apiKey from `config.json`
-        q, // query string
+        q: yql,
+        format: 'json',
       }
     })
-    .then(({ data }) => data);
+    .then(({data}) => data.query.results.channel);
 
   }
 
-  getIcon(info) {
-    const code = info.weather[0].id;
-    const hour = new Date().getHours();
-    let { icon } = weatherIcons[code];
-    let dorn = '';
+  getIcon(condition) {
+    const { code } = condition;
 
-    // If we are not in the ranges mentioned above, add a day/night prefix.
-    if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
-      dorn = (hour > 6 && hour < 20) ? 'day-' : 'night-';
+    if (weatherIcons[code]) {
+      return `wi-${weatherIcons[code].icon}`;
     }
 
-    // Night edge case
-    if (dorn.startsWith('night') && icon.startsWith('sunny')) {
-      icon = 'clear';
-    }
-
-    return `wi-${dorn}${icon}`;
+    return '';
   }
 
 }

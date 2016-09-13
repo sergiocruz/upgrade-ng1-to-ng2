@@ -9,6 +9,7 @@ import debounce from 'lodash/debounce';
 
 function MainCtrl($state, Weather) {
 
+  // Public properties
   const vm = this;
   vm.searchWeather = searchWeather;
   vm.onSearchChange = debounce(onSearchChange, 600);

@@ -44,6 +44,40 @@
   }
 }
 
+.weather-forecast {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 15px auto;
+  max-width: 310px;
+  padding: 0;
+  width: 100%;
+
+  li {
+    font-size: .8em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 1.4em;
+      margin-bottom: .5em;
+    }
+
+    .weather-forecast-day {
+      font-weight: bold;
+    }
+
+    .weather-forecast-temp {
+      font-size: .7em;
+    }
+  }
+
+}
+
 .weather-back {
   text-align: center;
   margin: 15px auto;
