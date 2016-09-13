@@ -5,6 +5,7 @@
   "main": "app/app.js",
   "scripts": {
     "start": "gulp watch",
+    "start-offline": "OFFLINE=1 npm start",
     "bundle": "gulp bundle",
     "gh-pages": "npm run bundle && npm run deploy:github-pages",
     "deploy:github-pages": "git subtree push --prefix public origin gh-pages"

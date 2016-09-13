@@ -19,17 +19,14 @@
 
 .weather-title {
   font-size: 10rem;
+  text-shadow: 2px 2px 3px black;
 
   @media (max-width: $screen-xs-max) {
     font-size: 5rem;
   }
-}
 
-.weather-subtitle {
-  font-size: 6rem;
-
-  @media (max-width: $screen-xs-max) {
-    font-size: 4rem;
+  small {
+    color: $text-color;
   }
 }
 
@@ -49,7 +46,7 @@
   display: flex;
   justify-content: space-between;
   list-style: none;
-  margin: 15px auto;
+  margin: 20px auto;
   max-width: 310px;
   padding: 0;
   width: 100%;
