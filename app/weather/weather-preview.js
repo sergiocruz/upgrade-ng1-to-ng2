@@ -1,9 +1,9 @@
-export const WeatherPreviewDirective = [
+export const WeatherPreview = [
   'Weather',
-  WeatherPreview,
+  WeatherPreviewDirective,
 ]
 
-function WeatherPreview(Weather) {
+function WeatherPreviewDirective(Weather) {
   return {
     restrict: 'E',
     template: `
