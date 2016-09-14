@@ -33,7 +33,14 @@ class Weather {
         format: 'json',
       }
     })
-    .then(({data}) => data.query.results.channel);
+    .then(({data}) => {
+
+      if (data.query && data.query.count > 0) {
+        return data.query.results.channel
+      }
+
+      throw "Records not found";
+    });
 
   }
 
