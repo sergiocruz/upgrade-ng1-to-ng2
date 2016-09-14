@@ -50,7 +50,8 @@ function MainCtrl($state, Weather) {
 
     Weather
       .getTemperature(vm.searchTerm, vm.searchCountry)
-      .then((info) => vm.weather = info);
+      .then((info) => vm.weather = info)
+      .catch(() => vm.weather = null);
   }
 
 
