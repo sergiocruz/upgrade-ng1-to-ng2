@@ -11,13 +11,13 @@
     "removeComments": false,
     "rootDir": "app",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "lib": ["es6", "dom"]
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "typings/index.d.ts",
     "app/app.ts"
   ]
 }
