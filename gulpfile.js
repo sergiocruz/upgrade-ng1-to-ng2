@@ -52,7 +52,7 @@ function bundle() {
     .pipe(source('bundle.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(uglify({compress:{drop_debugger: false}}))
+    // .pipe(uglify({compress:{drop_debugger: false}}))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('public/assets/js'))
     .pipe(browserSync.stream({once: true}));

@@ -1,3 +1,7 @@
+// shims needed for Angular
+import 'zone.js';
+import 'reflect-metadata'
+
 const angular = require('angular');
 import * as uiRouter from 'angular-ui-router';
 import { weatherModule } from './weather';
