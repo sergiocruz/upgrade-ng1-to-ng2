@@ -8,10 +8,9 @@ import { HttpModule } from '@angular/http';
 @NgModule({
   imports: [
     BrowserModule,
-    UpgradeModule
-  ]
     UpgradeModule,
-    HttpModule
+    HttpModule,
+  ]
 })
 export class AppModule {
   ngDoBootstrap() {}
