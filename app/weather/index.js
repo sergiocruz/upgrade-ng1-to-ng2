@@ -1,5 +1,6 @@
 import { module } from 'angular';
 export const weatherModule = 'app.weather';
+import { downgradeComponent, downgradeInjectable } from '@angular/upgrade/static';
 
 
 import { WeatherService } from './weather.service';
@@ -10,7 +11,10 @@ import { routes } from './routes';
 
 module(weatherModule, [])
   .config(routes)
-  .service('Weather', WeatherService)
+  .service('Weather', downgradeInjectable(WeatherService))
   .controller('MainController', MainController)
   .controller('WeatherController', WeatherController)
-  .directive('weatherPreview', WeatherPreview)
+  .directive('weatherPreview', downgradeComponent({
+    component: WeatherPreview,
+    inputs: ['weather'],
+  }))
