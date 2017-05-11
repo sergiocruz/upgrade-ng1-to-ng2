@@ -1,6 +1,17 @@
-# Steps to upgrading to Angular 2
+# Upgrade from AngularJS directive to Angular component
 
-Maybe you've heard that it is possible to slowly upgrade an Angular 1.x application into Angular 2, but have tried to do so and there were too many steps. Maybe you've tried following [this guide](https://angular.io/docs/ts/latest/guide/upgrade.html) but they were either too long or didn't make much sense.
+## Conference Talks
+
+Most recently, I've given variations of talks based around this repo at the following conferences:
+
+- [OSCON 2017 @ Austin, TX](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/56963) _on 05/11/2017 [[branch]](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/oscon2017)_
+- [JazzCon 2017](http://jazzcon.tech) _on 03/23/2017 [[branch]](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/jazzcon-nola)_
+- [Little Rock Tech Fest 2016](http://www.lrtechfest.com/) _on 10/09/2016_
+- [Northeast JavaScript Conference 2016](http://www.northeastjsconference.com/) _on 09/15/2016_
+
+## Steps to Upgrade
+
+Maybe you've heard that it is possible to slowly upgrade an AngularJS (1.x) application into Angular (2+), but have tried to do so and there were too many steps. Maybe you've tried following [this guide](https://angular.io/docs/ts/latest/guide/upgrade.html) but they were either too long or didn't make much sense.
 
 My goal for this repository is to give you a fully functioning Angular 1.x app that uses ES2015+ and is packagked with `gulp`, `babel` and `browserify`. Then we will go through the steps to upgrade this app piece-by-piece to Angular 2 (with TypeScript).
 
