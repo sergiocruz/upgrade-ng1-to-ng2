@@ -4,6 +4,7 @@
 
 Most recently, I've given variations of talks based around this repo at the following conferences:
 
+- [Nodevember 2017 @ Nashville, TN](http://nodevember.org/talk/Sergio%20Cruz) _on 11/27/2017 [[branch]](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/nodevember-2017)_
 - [OSCON 2017 @ Austin, TX](https://conferences.oreilly.com/oscon/oscon-tx/public/schedule/detail/56963) _on 05/11/2017 [[branch]](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/oscon2017)_
 - [JazzCon 2017](http://jazzcon.tech) _on 03/23/2017 [[branch]](https://github.com/sergiocruz/upgrade-ng1-to-ng2/tree/jazzcon-nola)_
 - [Little Rock Tech Fest 2016](http://www.lrtechfest.com/) _on 10/09/2016_
