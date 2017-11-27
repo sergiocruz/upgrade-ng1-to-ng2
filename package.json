@@ -14,9 +14,7 @@
     "start-offline": "OFFLINE=1 npm start",
     "bundle": "gulp bundle",
     "gh-pages": "npm run bundle && npm run deploy:github-pages",
-    "deploy:github-pages": "git subtree push --prefix public origin gh-pages",
-    "typings:install": "typings install",
-    "postinstall": "npm run typings:install"
+    "deploy:github-pages": "git subtree push --prefix public origin gh-pages"
   },
   "devDependencies": {
     "@angular/common": "^4.1.2",
@@ -48,7 +46,7 @@
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.2.0",
     "tsify": "^3.0.1",
-    "typescript": "^2.2.1",
+    "typescript": "^2.6.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0",
